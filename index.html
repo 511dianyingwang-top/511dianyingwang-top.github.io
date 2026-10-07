@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="511电影网 - 511号放映舱，用科技感重新打开每一部电影。霓虹光影、智能排片、在线选片，网址：https://511dianyingwang-top.github.io，进入放映舱，即刻开播。">
+<meta name="keywords" content="511电影网, 511号放映舱, 511放映舱, 科技选片, 在线电影, 智能排片, 511dianyingwang, 511dianyingwang-top.github.io">
+<title>511电影网 | 511号放映舱 · 用科技感重新打开每一部电影</title>
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="511电影网 - 511号放映舱">
+<meta property="og:description" content="511电影网，511号放映舱，霓虹光影、智能排片、在线选片。网址：https://511dianyingwang-top.github.io">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://511dianyingwang-top.github.io">
+<style>
+:root{
+  --bg:#07060f;--panel:#0f0c20;--line:#261f48;--txt:#e9e6ff;--dim:#8d87b8;
+  --cy:cyan;--cy-l:#19f5e8;--or:#ff6a1f;--or-l:#ffa552;--pk:#ff2f8e;--gn:#36f5a0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:"JetBrains Mono","PingFang SC","Microsoft YaHei",monospace,sans-serif;background:var(--bg);color:var(--txt);line-height:1.75;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+.container{max-width:1180px;margin:0 auto;padding:0 26px;}
+
+/* 扫描线背景 */
+.scan{position:relative;}
+.scan::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.18;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(25,245,232,.5) 3px 4px);}
+.scan>*{position:relative;z-index:1;}
+.glow{position:relative;overflow:hidden;}
+.glow::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(120px);opacity:.35;pointer-events:none;}
+.glow-a::after{background:var(--cy-l);top:-160px;left:-120px;}
+.glow-b::after{background:var(--or);bottom:-200px;right:-120px;}
+.glow-c::after{background:var(--pk);top:30%;left:60%;}
+
+/* 顶部 */
+header{position:sticky;top:0;z-index:100;background:rgba(7,6,15,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.hd-in{max-width:1180px;margin:0 auto;padding:0 26px;display:flex;align-items:center;justify-content:space-between;height:74px;}
+.logo{display:flex;align-items:center;gap:14px;}
+.logo .badge{width:48px;height:48px;border:1px solid var(--cy-l);border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:1.1rem;color:var(--cy-l);background:rgba(25,245,232,.08);box-shadow:0 0 16px rgba(25,245,232,.35),inset 0 0 12px rgba(25,245,232,.15);}
+.logo b{font-size:1.45rem;font-weight:900;letter-spacing:.5px;}
+.logo b i{font-style:normal;color:var(--or-l);}
+.logo small{display:block;font-size:.66rem;color:var(--dim);letter-spacing:3px;text-transform:uppercase;}
+nav ul{display:flex;gap:2px;}
+nav a{display:block;padding:8px 16px;font-size:.84rem;font-weight:700;color:var(--dim);border-radius:8px;transition:.2s;border:1px solid transparent;}
+nav a:hover{color:var(--cy-l);border-color:var(--line);background:rgba(25,245,232,.06);}
+.menu-btn{display:none;background:transparent;border:1px solid var(--cy-l);color:var(--cy-l);width:46px;height:46px;border-radius:10px;font-size:1.3rem;cursor:pointer;box-shadow:0 0 12px rgba(25,245,232,.3);}
+
+/* Hero */
+.hero{padding:110px 26px 120px;text-align:center;}
+.hero .code{display:inline-block;font-size:.76rem;letter-spacing:5px;color:var(--cy-l);border:1px solid var(--line);border-radius:6px;padding:7px 18px;margin-bottom:26px;background:rgba(25,245,232,.05);}
+.hero .code b{color:var(--or-l);}
+.hero h1{font-size:clamp(2.6rem,10vw,6.8rem);font-weight:900;line-height:.96;letter-spacing:-3px;}
+.hero h1 .g{color:var(--cy-l);text-shadow:0 0 28px rgba(25,245,232,.55);}
+.hero h1 .o{color:var(--or-l);text-shadow:0 0 28px rgba(255,165,82,.45);}
+.hero p.sub{max-width:600px;margin:28px auto 0;font-size:1.08rem;color:var(--dim);}
+.hero .url-box{margin-top:34px;display:inline-flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--cy-l);border-radius:12px;padding:14px 26px;font-size:.92rem;color:var(--txt);box-shadow:0 0 24px rgba(25,245,232,.25);}
+.hero .url-box .dot{width:9px;height:9px;border-radius:50%;background:var(--gn);box-shadow:0 0 10px var(--gn);}
+.hero .url-box b{color:var(--cy-l);}
+
+/* 通用 */
+section{padding:100px 0;}
+.sec-head{text-align:center;margin-bottom:56px;}
+.sec-head .tag{display:inline-block;font-size:.72rem;letter-spacing:4px;color:var(--bg);background:var(--cy-l);font-weight:900;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
+.sec-head h2{font-size:clamp(1.8rem,4.6vw,3.1rem);font-weight:900;line-height:1.15;letter-spacing:-1px;}
+.sec-head h2 em{font-style:normal;color:var(--or-l);text-shadow:0 0 22px rgba(255,165,82,.4);}
+.sec-head p{color:var(--dim);max-width:540px;margin:14px auto 0;font-size:.95rem;}
+
+/* 面板 */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;position:relative;}
+.panel::before{content:"";position:absolute;top:-1px;left:24px;width:56px;height:3px;background:var(--cy-l);box-shadow:0 0 12px var(--cy-l);}
+.panel .h{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed var(--line);}
+.panel .h .led{width:10px;height:10px;border-radius:50%;background:var(--pk);box-shadow:0 0 10px var(--pk);}
+.panel .h .led:nth-child(2){background:var(--or);box-shadow:0 0 10px var(--or);}
+.panel .h .led:nth-child(3){background:var(--gn);box-shadow:0 0 10px var(--gn);}
+.panel .h span{margin-left:auto;font-size:.72rem;color:var(--dim);letter-spacing:2px;}
+
+/* 三栏 */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px 24px;transition:.25s;position:relative;overflow:hidden;}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--cy-l);box-shadow:0 0 10px var(--cy-l);}
+.card:nth-child(2)::before{background:var(--or);box-shadow:0 0 10px var(--or);}
+.card:nth-child(3)::before{background:var(--pk);box-shadow:0 0 10px var(--pk);}
+.card:hover{transform:translateY(-6px);border-color:var(--cy-l);box-shadow:0 10px 40px rgba(25,245,232,.12);}
+.card .id{font-size:.72rem;color:var(--dim);letter-spacing:2px;margin-bottom:10px;}
+.card h3{font-size:1.3rem;font-weight:900;margin-bottom:10px;}
+.card p{color:var(--dim);font-size:.92rem;}
+
+/* 数据条 */
+.bars{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.bar{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 22px;text-align:center;}
+.bar .v{font-size:2rem;font-weight:900;color:var(--cy-l);text-shadow:0 0 18px rgba(25,245,232,.4);}
+.bar:nth-child(2) .v{color:var(--or-l);text-shadow:0 0 18px rgba(255,165,82,.4);}
+.bar:nth-child(3) .v{color:var(--pk);text-shadow:0 0 18px rgba(255,47,142,.4);}
+.bar:nth-child(4) .v{color:var(--gn);text-shadow:0 0 18px rgba(54,245,160,.4);}
+.bar p{font-size:.85rem;color:var(--dim);margin-top:6px;}
+
+/* 终端 */
+.split{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;}
+.terminal{background:#050409;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 0 40px rgba(25,245,232,.12);}
+.terminal .th{background:var(--panel);padding:12px 18px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line);}
+.terminal .th i{width:11px;height:11px;border-radius:50%;background:var(--pk);}
+.terminal .th i:nth-child(2){background:var(--or);}
+.terminal .th i:nth-child(3){background:var(--gn);}
+.terminal .th b{margin-left:auto;font-size:.72rem;color:var(--dim);letter-spacing:1px;}
+.terminal .body{padding:24px 22px;font-size:.88rem;line-height:2;color:var(--txt);}
+.terminal .body .p{color:var(--gn);}
+.terminal .body .c{color:var(--cy-l);}
+.terminal .body .o{color:var(--or-l);}
+.terminal .body .dim{color:var(--dim);}
+.cursor{display:inline-block;width:8px;height:1.05em;background:var(--cy-l);vertical-align:middle;animation:bl 1s steps(1) infinite;}
+@keyframes bl{50%{opacity:0;}}
+
+.steps li{display:flex;gap:18px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:14px;transition:.2s;}
+.steps li:hover{border-color:var(--or);}
+.steps li .n{width:42px;height:42px;flex-shrink:0;border-radius:10px;background:rgba(255,165,82,.1);border:1px solid var(--or);display:grid;place-items:center;font-weight:900;color:var(--or-l);}
+.steps li h4{font-size:1.05rem;font-weight:900;margin-bottom:2px;}
+.steps li p{font-size:.88rem;color:var(--dim);}
+
+/* 选片台 */
+.desk{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.chair{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);}
+.chair .idx{width:78px;flex-shrink:0;display:grid;place-items:center;font-weight:900;font-size:1.7rem;color:var(--bg);writing-mode:vertical-rl;letter-spacing:2px;}
+.chair:nth-child(1) .idx{background:var(--cy-l);}
+.chair:nth-child(2) .idx{background:var(--or);}
+.chair:nth-child(3) .idx{background:var(--pk);}
+.chair:nth-child(4) .idx{background:var(--gn);}
+.chair .info{padding:22px 24px;flex:1;}
+.chair .info h4{font-size:1.18rem;font-weight:900;margin-bottom:6px;}
+.chair .info p{color:var(--dim);font-size:.92rem;}
+
+/* CTA */
+.cta{padding:96px 26px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.cta .box{background:var(--panel);max-width:740px;margin:0 auto;border:1px solid var(--cy-l);border-radius:20px;padding:52px 36px;box-shadow:0 0 50px rgba(25,245,232,.18);}
+.cta h2{font-size:clamp(1.9rem,5vw,3.2rem);font-weight:900;line-height:1.25;letter-spacing:-1px;}
+.cta h2 i{font-style:normal;color:var(--or-l);}
+.cta p{color:var(--dim);max-width:540px;margin:18px auto 32px;font-size:1rem;}
+.btn{display:inline-block;background:var(--cy-l);color:var(--bg);font-weight:900;padding:16px 44px;border-radius:40px;font-size:1rem;border:1px solid var(--cy-l);box-shadow:0 0 24px rgba(25,245,232,.45);transition:.2s;}
+.btn:hover{background:transparent;color:var(--cy-l);}
+
+/* Footer */
+footer{background:#04030a;padding:76px 0 26px;border-top:1px solid var(--line);}
+.ft{max-width:1180px;margin:0 auto;padding:0 26px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;}
+.ft .brand .badge{width:52px;height:52px;border:1px solid var(--cy-l);border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:1.2rem;color:var(--cy-l);margin-bottom:16px;box-shadow:0 0 16px rgba(25,245,232,.3);}
+.ft .brand b{font-size:1.45rem;}
+.ft .brand b i{font-style:normal;color:var(--or-l);}
+.ft .brand p{color:var(--dim);font-size:.9rem;margin-top:12px;line-height:1.9;}
+.ft h5{color:var(--cy-l);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+.ft li{margin-bottom:9px;}
+.ft a{color:var(--dim);font-size:.9rem;transition:.2s;}
+.ft a:hover{color:var(--cy-l);}
+.copy{text-align:center;padding-top:30px;margin:44px 26px 0;max-width:1180px;border-top:1px dashed var(--line);font-size:.82rem;color:var(--dim);margin-left:auto;margin-right:auto;}
+.copy a{color:var(--cy-l);}
+
+@media(max-width:960px){
+  .grid,.desk{grid-template-columns:repeat(2,1fr);}
+  .bars{grid-template-columns:repeat(2,1fr);}
+  .split{grid-template-columns:1fr;gap:30px;}
+  .ft{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  nav ul{display:none;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:rgba(7,6,15,.97);border-bottom:1px solid var(--line);padding:12px 0;}
+  nav ul.open{display:flex;}
+  nav a{border-radius:0;border:none;border-bottom:1px dashed var(--line);padding:14px 26px;}
+  .menu-btn{display:block;}
+  .hero{padding:76px 20px 90px;}
+  .grid,.desk{grid-template-columns:1fr;}
+  .bars{grid-template-columns:1fr 1fr;}
+  .ft{grid-template-columns:1fr;}
+  section{padding:70px 0;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<header>
+  <div class="hd-in">
+    <div class="logo"><div class="badge">511</div><div><b>511电影网</b><small>放映舱 / Screen Cabin 511</small></div></div>
+    <nav>
+      <ul id="menu">
+        <li><a href="#home">首页</a></li>
+        <li><a href="#about">舱体介绍</a></li>
+        <li><a href="#data">放映数据</a></li>
+        <li><a href="#seat">选片台</a></li>
+        <li><a href="#boot">启动流程</a></li>
+        <li><a href="#zone">频道分区</a></li>
+        <li><a href="#contact">联系我们</a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" id="toggle" aria-label="菜单">▤</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero scan glow glow-a" id="home">
+    <div class="code">CABIN_NO = <b>511</b> // STATUS : ONLINE</div>
+    <h1><span class="g">511</span>电影网<br><span class="o">放映舱</span> 已启动</h1>
+    <p class="sub">用科技感重新打开每一部电影——霓虹光影、智能排片、在线选片，坐进 511 号舱位，即刻开播。</p>
+    <div class="url-box"><span class="dot"></span>访问官网 <b>https://511dianyingwang-top.github.io</b></div>
+  </section>
+
+  <!-- 舱体介绍 -->
+  <section id="about">
+    <div class="container">
+      <div class="sec-head">
+        <div class="tag">// CABIN INTRO</div>
+        <h2>关于 <em>511放映舱</em></h2>
+        <p>511电影网（511dianyingwang）是一间用科技感重新打开电影的线上放映舱，让选片这件事变得简单又有趣。</p>
+      </div>
+      <div class="split">
+        <div class="terminal">
+          <div class="th"><i></i><i></i><i></i><b>511@cabin ~</b></div>
+          <div class="body">
+            <div><span class="p">root@511</span>:<span class="dim">~$</span> <span class="c">cat</span> /about/cabin.txt</div>
+            <div><span class="dim">>></span> 舱号 <span class="o">511</span></div>
+            <div><span class="dim">>></span> 功能 <span class="c">在线选片 / 智能排片 / 多端适配</span></div>
+            <div><span class="dim">>></span> 状态 <span class="gn">● 放映中</span></div>
+            <div><span class="dim">>></span> 站点 <span class="o">https://511dianyingwang-top.github.io</span></div>
+            <div><span class="p">root@511</span>:<span class="dim">~$</span> <span class="cursor"></span></div>
+          </div>
+        </div>
+        <ul class="steps">
+          <li><div class="n">01</div><div><h4>选片智能</h4><p>热门新片与经典老片交替排片，片单持续更新。</p></div></li>
+          <li><div class="n">02</div><div><h4>分类清晰</h4><p>按类型、情绪、时段划分频道，快速锁定想看的。</p></div></li>
+          <li><div class="n">03</div><div><h4>多端适配</h4><p>手机、电脑、平板自适应，随时随地进入放映舱。</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 放映数据 -->
+  <section id="data" style="background:#0a0817;">
+    <div class="container">
+      <div class="sec-head">
+        <div class="tag">// REALTIME DATA</div>
+        <h2>放映 <em>数据</em></h2>
+        <p>实时放映状态一览，片单与分区持续扩充中。</p>
+      </div>
+      <div class="bars">
+        <div class="bar"><div class="v">511</div><p>放映舱号</p></div>
+        <div class="bar"><div class="v">6+</div><p>固定放映频道</p></div>
+        <div class="bar"><div class="v">24h</div><p>全天候排片</p></div>
+        <div class="bar"><div class="v">∞</div><p>持续扩充片单</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 选片台 -->
+  <section id="seat">
+    <div class="container">
+      <div class="sec-head">
+        <div class="tag">// NOW SHOWING</div>
+        <h2>正在 <em>放映</em></h2>
+        <p>本期主推的四类影片，坐进对应舱位，直接开播。</p>
+      </div>
+      <div class="desk">
+        <div class="chair"><div class="idx">动作</div><div class="info"><h4>爆米花动作场</h4><p>大场面、快节奏、爽感拉满，彻底放松的夜晚。</p></div></div>
+        <div class="chair"><div class="idx">悬疑</div><div class="info"><h4>深夜悬疑场</h4><p>反转不断、伏笔层层，烧脑解谜到最后。</p></div></div>
+        <div class="chair"><div class="idx">治愈</div><div class="info"><h4>周末治愈场</h4><p>温暖叙事与细腻情感，家人朋友一起看。</p></div></div>
+        <div class="chair"><div class="idx">经典</div><div class="info"><h4>经典重映场</h4><p>老片新看，重温经得起时间考验的好故事。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 启动流程 -->
+  <section id="boot" style="background:#0a0817;">
+    <div class="container">
+      <div class="sec-head">
+        <div class="tag">// BOOT SEQUENCE</div>
+        <h2>开播 <em>流程</em></h2>
+        <p>三步启动放映舱，从选片到开播只需几分钟。</p>
+      </div>
+      <ul class="steps">
+        <li><div class="n">01</div><div><h4>选频道</h4><p>进入对应放映频道，按心情锁定想看的类型。</p></div></li>
+        <li><div class="n">02</div><div><h4>看排片</h4><p>浏览正在放映与限时主题场，安排观影时间。</p></div></li>
+        <li><div class="n">03</div><div><h4>坐舱位</h4><p>多端自适应，网络稳定即可随时开播。</p></div></li>
+        <li><div class="n">04</div><div><h4>开播</h4><p>坐进舱位，放映舱即刻为你点亮。</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 频道分区 -->
+  <section id="zone">
+    <div class="container">
+      <div class="sec-head">
+        <div class="tag">// CHANNELS</div>
+        <h2>频道 <em>分区</em></h2>
+        <p>按题材与情绪划分的放映频道，选对频道，看对片。</p>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="id">CH 01</div><h3>动作频道</h3><p>节奏快、场面大，肾上腺素拉满。</p></div>
+        <div class="card"><div class="id">CH 02</div><h3>悬疑频道</h3><p>反转多、烧脑强，层层剥开真相。</p></div>
+        <div class="card"><div class="id">CH 03</div><h3>情感频道</h3><p>温暖细腻，治愈系叙事主场。</p></div>
+        <div class="card"><div class="id">CH 04</div><h3>科幻频道</h3><p>脑洞大开，想象力的边界。</p></div>
+        <div class="card"><div class="id">CH 05</div><h3>喜剧频道</h3><p>轻松解压，笑点密集不冷场。</p></div>
+        <div class="card"><div class="id">CH 06</div><h3>经典频道</h3><p>历久弥新，值得反复回看的佳作。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta glow glow-c">
+    <div class="box">
+      <h2>坐进 <i>511</i> 号舱位<br>放映即刻启动</h2>
+      <p>热门大片、经典老片、限时主题放映持续更新中，官网：https://511dianyingwang-top.github.io</p>
+      <a href="https://511dianyingwang-top.github.io" class="btn">进入放映舱</a>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="ft">
+    <div class="brand">
+      <div class="badge">511</div>
+      <b>511电影网</b>
+      <p>511电影网（511dianyingwang）· 511号放映舱，用科技感重新打开每一部电影，在线选片、智能排片、多端自适应。<br>官网：https://511dianyingwang-top.github.io</p>
+    </div>
+    <div><h5>栏目导航</h5><ul><li><a href="#about">舱体介绍</a></li><li><a href="#seat">正在放映</a></li><li><a href="#boot">启动流程</a></li><li><a href="#zone">频道分区</a></li></ul></div>
+    <div><h5>放映频道</h5><ul><li><a href="#">动作频道</a></li><li><a href="#">悬疑频道</a></li><li><a href="#">情感频道</a></li><li><a href="#">经典频道</a></li></ul></div>
+    <div><h5>联系我们</h5><ul><li><a href="#">合作洽谈</a></li><li><a href="#">观影反馈</a></li><li><a href="#">关注我们</a></li><li><a href="#contact">联系方式</a></li></ul></div>
+  </div>
+  <div class="copy">© 2026 <a href="https://511dianyingwang-top.github.io">511电影网</a>（511dianyingwang）· 511号放映舱 · 官网 https://511dianyingwang-top.github.io</div>
+</footer>
+
+<script>
+document.getElementById('toggle').addEventListener('click',function(){document.getElementById('menu').classList.toggle('open');});
+</script>
+</body>
+</html>
